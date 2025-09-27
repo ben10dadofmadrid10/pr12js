@@ -1,0 +1,68 @@
+<html>
+
+<head>
+ 
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quinta Serie - Práctico 12 · Ejercicio 12</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2>🏷️ Ejercicio 12: Pares del 1 al 20 y su suma</h2>
+
+    <div class="instrucciones">
+      <h3>📋 Instrucciones</h3>
+      <p>Este ejercicio recorre los números del <b>1 al 20</b>, muestra sólo los <b>pares</b> y calcula la <b>suma total</b> de esos pares.</p>
+    </div>
+
+
+    <ul id="listaPares" class="lista" aria-live="polite"></ul>
+
+   
+    <div id="resultadoSuma" class="resultado">Aquí aparecerá la suma de los pares.</div>
+
+    <button id="btnEjecutar" class="btn" type="button">¡Generar pares y sumar!</button>
+
+    <footer>Curso de JavaScript · Enseñanza Media | Ejercicio 12</footer>
+  </div>
+
+  
+  <script>
+    function generarParesYSuma() {
+      let lista = document.getElementById('listaPares');
+      let resultado = document.getElementById('resultadoSuma');
+
+     
+      lista.innerHTML = '';
+      resultado.innerText = 'Calculando...';
+      resultado.classList.remove('mensaje-correcto', 'mensaje-incorrecto');
+
+
+      let sumaPares = 0;
+
+    
+      for (let i = 1; i <= 20; i++) {
+        if (i % 2 === 0) {
+          let item = document.createElement('li');
+          item.innerText = 'Número par: ' + i;
+          lista.appendChild(item);
+
+          sumaPares = sumaPares + i; 
+          console.log('generarParesYSuma(): i = ' + i + ' → par; sumaPares = ' + sumaPares);
+        }
+      }
+
+     
+      resultado.innerText = '🔢 La suma total de los números pares entre 1 y 20 es: ' + sumaPares;
+      resultado.classList.add('mensaje-correcto');
+      console.log('generarParesYSuma(): suma total = ' + sumaPares);
+    }
+
+        let btnEjecutar = document.getElementById('btnEjecutar');
+    btnEjecutar.onclick = generarParesYSuma;
+
+       console.log('Script cargado: botón #btnEjecutar enlazado a generarParesYSuma; listo para ejecutar.');
+  </script>
+</body>
+</html>
